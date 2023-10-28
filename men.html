@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>i teach with passion</title>
+		<style>
+			.container {
+				text-align: center;
+			}
+			.centered-div {
+				display: inline-block;
+				/* You can also set a width for the centered div if needed */
+			}
+			html, body {
+				background: black;
+				height: 100%;
+				margin: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		</style>
+		<script>
+			var index = 0;
+			var questions = [' I’m tall when I’m young, and I’m short when I’m old. What am I?', ' What month of the year has 28 days?', ' What goes up but never comes down?', ' What is always in front of you but can’t be seen?'];
+			var choices = [
+					['A penis','A stick','A candle'],
+					['February','April','All of them'],
+					['The fever','Your age','Your d**k'],
+					['Your forehead','The exchange rate','The future']
+				      ];
+			var images = ['men2.png', 'men3.png', 'men4.png', 'men5.png', 'men6.jpg'];
+			var answers = ['An egg', 'A candle', 'All of them', 'Your age', 'The future'];
+			function changeImage(){
+				if(index == 5){
+					window.close();
+				}
+				else{
+					var answer = document.getElementById('answer');
+					if(answer.value == answers[index]){
+						var image_holder = document.getElementById('image_holder');
+						image_holder.src = images[index++];
+						var q_no = document.getElementById('q_no');
+						if(index == 5){
+							document.getElementById('next_btn').innerHTML = 'Close';
+							q_no.innerHTML = 'Haha! I hope you like it. &#128514;';
+							answer.style.visibility = 'hidden';
+						}
+						else{
+							q_no.innerHTML = (index+1) + '.' + questions[index-1];
+							var option1 = document.getElementById('option1');
+							var option2 = document.getElementById('option2');
+							var option3 = document.getElementById('option3');
+							option1.innerHTML = choices[index-1][0];
+							option2.innerHTML = choices[index-1][1];
+							option3.innerHTML = choices[index-1][2];
+						}
+					}
+					else{
+						alert('Wrong Answer');
+					}
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="centered-div">
+				<table>
+					<tr>
+						<td>
+							<img id="image_holder" style="width:300px;" src="men1.png"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<pre></pre>
+							<label id="q_no" style="color: white; font-size: 18px;">1. What has to be broken before you can use it?</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<pre></pre>
+							<select id="answer" style="width: 150px; height: 35px;">
+								<option id="option1">A ball</option>
+								<option id="option2">An egg</option>
+								<option id="option3">A glass</option>
+							</select>
+							<pre></pre>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id="next_btn" style="width: 200px; height: 60px; border: 4px solid gray; background: white; color: black; font-size: 15px;" onclick="changeImage()">Next</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
